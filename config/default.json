@@ -1,5 +1,4 @@
 {
 	"baseUrl": "mehanikatest.atlassian.net",
-	"urlAddon": "/jira/rest",
-	"authUrl": "/auth/1/session"
+	"authUrl": "/rest/auth/1/session"
 }
