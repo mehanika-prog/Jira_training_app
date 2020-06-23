@@ -1,1 +1,13 @@
-<h1>Auth page</h1>
+<form class="authForm" action="/auth" method="POST">
+	<div class="input-field">
+		<input id="username" name="name" type="text" class="validate" required>
+		<label for="username">Userame</label>
+		<span class="helper-text" data-error="Type your username!"></span>
+	</div>
+	<div class="input-field">
+		<input id="userpassword" name="password" type="password" class="validate" required>
+		<label for="userpassword">Password</label>
+		<span class="helper-text" data-error="Type your password!"></span>
+	</div>
+	<button class="btn btn-primary">Log In</button>
+</form>
