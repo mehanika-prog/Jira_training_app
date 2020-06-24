@@ -1,35 +1,57 @@
 const {Router} = require('express')
 const sendRequest = require('../utils')
 const config = require('config')
+const basic = require('basic-authorization-header')
+const Cookies = require('cookies')
 
 
 const router = Router()
 
 router.get('/', (req, res) => {
-	res.render('auth', {
-		title: "Authentication"
-	})
+
+	const cookies = new Cookies(req, res)
+	
+	if(cookies.get('auth')){
+
+		res.redirect('/issues')
+
+	}else{
+
+		res.render('auth', {
+
+			title: "Authentication"
+	
+		})
+
+	}
+
 })
 
 router.post('/', (req, res) => {
 
-	const url = config.get('baseUrl')
-	const path = config.get('authUrl')               
-	const body = {
-		"username": req.body.name,
-		"password": req.body.password
-	}
+	const url = req.body.url
+	const path = config.get('authUrl')
+	const auth = basic(req.body.email, req.body.apitoken)
 
-	console.log(url, path, body)
-
-	sendRequest('POST', url, path, body)
+	sendRequest('GET', url, path, auth)
 	.then(data => {
+	
+		const cookies = new Cookies(req, res)
+		cookies.set('auth', auth)
 
-		console.log(data)
+		res.redirect('/issues')
 
 	})
+	.catch(err => {
 
-	res.redirect('/auth')
+		res.render('auth', {
+
+			title: "Authentication",
+			loginFailed	: true
+
+		})
+
+	})
 
 })
 

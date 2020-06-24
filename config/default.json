@@ -1,4 +1,3 @@
 {
-	"baseUrl": "mehanikatest.atlassian.net",
 	"authUrl": "/rest/auth/1/session"
 }

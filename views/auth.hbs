@@ -1,13 +1,18 @@
 <form class="authForm" action="/auth" method="POST">
 	<div class="input-field">
-		<input id="username" name="name" type="text" class="validate" required>
-		<label for="username">Userame</label>
-		<span class="helper-text" data-error="Type your username!"></span>
+		<input id="url" name="url" type="text" class="validate" required>
+		<label for="url">Url</label>
+		<span class="helper-text" data-error="Type your Url!"></span>
 	</div>
 	<div class="input-field">
-		<input id="userpassword" name="password" type="password" class="validate" required>
-		<label for="userpassword">Password</label>
-		<span class="helper-text" data-error="Type your password!"></span>
+		<input id="email" name="email" type="email" class="validate" required>
+		<label for="email">Email</label>
+		<span class="helper-text" data-error="Type your Email!"></span>
+	</div>
+	<div class="input-field">
+		<input id="apitoken" name="apitoken" type="password" class="validate" required>
+		<label for="apitoken">API token</label>
+		<span class="helper-text" data-error="Type your API token!"></span>
 	</div>
 	<button class="btn btn-primary">Log In</button>
 </form>
