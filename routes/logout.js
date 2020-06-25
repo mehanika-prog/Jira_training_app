@@ -8,8 +8,9 @@ router.get('/', (req, res) => {
 
 	const cookies = new Cookies(req, res)
 	
-    cookies.set('auth', '')
-    res.redirect('/auth')
+	cookies.set('url', '')
+	cookies.set('auth', '')
+	res.redirect('/auth')
 
 })
 

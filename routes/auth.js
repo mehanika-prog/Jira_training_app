@@ -37,6 +37,7 @@ router.post('/', (req, res) => {
 	.then(data => {
 	
 		const cookies = new Cookies(req, res)
+		cookies.set('url', url)
 		cookies.set('auth', auth)
 
 		res.redirect('/issues')

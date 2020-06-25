@@ -1,2 +1,21 @@
-<h1>Issues</h1>
-<a href="/logout">LogOut</a>
+<div class="input-field filtersField">
+	<form action="/issues" method="POST">
+		<select class="validate" id="filters" name="filter">
+			{{!-- <option value="" disabled selected>default filter</option> --}}
+			{{#if data.length}}
+				{{#each data}}
+					<option value="{{id}}">{{name}}</option>
+				{{/each}}
+			{{else}}
+				<option value="" selected disabled>No filters available</option>
+			{{/if}}
+		</select>
+		{{#if data.length}}
+			<button class="btn btn-primaty">Select</button>
+		{{else}}
+			<button class="btn btn-primaty" disabled>Select</button>
+		{{/if}}
+	</form>
+	<label for="filters">Select issues by filter</label>
+</div>
+<a class="logOutBtn" href="/logout">Log Out</a>

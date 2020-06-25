@@ -20,3 +20,18 @@
 	color: red;
 
 }
+
+.filtersField{
+
+	padding-top: 2rem;
+
+}
+
+.logOutBtn{
+
+	position: fixed;
+	bottom: 3%;
+	right: 1%;
+	transform: translate(-50%, 0);
+
+}

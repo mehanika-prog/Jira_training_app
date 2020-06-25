@@ -1,5 +1,7 @@
 const {Router} = require('express')
 const Cookies = require('cookies')
+const config = require('config')
+const sendRequest = require('../utils')
 
 
 const router = Router()
@@ -7,10 +9,28 @@ const router = Router()
 router.get('/', (req, res) => {
 
 	const cookies = new Cookies(req, res)
-	
-	if(cookies.get('auth')){
+	const auth = cookies.get('auth')
 
-		res.render('issues')
+	if(auth){
+
+		const url = cookies.get('url')
+		const path = config.get('getFilterUrl')
+
+		sendRequest('GET', url, path, auth)
+		.then(data => {
+
+			res.render('issues', {
+
+				data: data
+
+			})
+
+		})
+		.catch(err => {
+
+			res.redirect('/error')
+
+		})
 
 	}else{
 
