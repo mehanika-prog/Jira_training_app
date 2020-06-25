@@ -1,3 +1,9 @@
+{{#if loginFailed}}
+	<div class="loginFailed">
+		<p>Login Failed!</p>
+	</div>
+{{/if}}
+
 <form class="authForm" action="/auth" method="POST">
 	<div class="input-field">
 		<input id="url" name="url" type="text" class="validate" required>

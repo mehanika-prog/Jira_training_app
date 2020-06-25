@@ -1,4 +1,5 @@
 .authForm{
+
 	width: 40%;
 	position: relative;
 	left: 50%;
@@ -6,4 +7,16 @@
 	border-radius: 20px;
 	padding: 20px;
 	transform: translate(-50%, 40%);
+
+}
+
+.loginFailed{
+
+	position: fixed;
+	top: 4%;
+	left: 50%;
+	transform: translate(-50%, 0);
+	font-size: 20pt;
+	color: red;
+
 }
