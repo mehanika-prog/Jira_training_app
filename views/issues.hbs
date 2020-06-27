@@ -3,25 +3,31 @@
 		<select class="validate" id="filters" name="filter">
 			{{!-- <option value="" disabled selected>default filter</option> --}}
 			{{#if filters.length}}
-				{{#each filters}}
-					<option value="{{id}}">{{name}}</option>
-				{{/each}}
+			{{#each filters}}
+			<option value="{{id}}">{{name}}</option>
+			{{/each}}
 			{{else}}
-				<option value="" selected disabled>No filters available</option>
+			<option value="" selected disabled>No filters available</option>
 			{{/if}}
 		</select>
 		{{#if filters.length}}
-			<button class="btn btn-primaty">Select</button>
+		<button class="btn btn-primaty">Select</button>
 		{{else}}
-			<button class="btn btn-primaty" disabled>Select</button>
+		<button class="btn btn-primaty" disabled>Select</button>
 		{{/if}}
 	</form>
 	<label for="filters">Select issues by filter</label>
 	{{#if loading}}
-		<div class="progress">
-			<div class="indeterminate"></div>
-		</div>
+	<div class="progress">
+		<div class="indeterminate"></div>
+	</div>
 	{{/if}}
 </div>
+
+{{#if issues}}
+<div class="table-container">
+	
+</div>
+{{/if}}
 
 <a class="logOutBtn" href="/logout">Log Out</a>

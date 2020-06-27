@@ -73,8 +73,7 @@ router.post('/', (req, res) => {
 			sendRequest('GET', url, searchPath, auth, {jql: filter.jql})
 			.then(issues => {
 
-				// res.end()
-				console.log(issues.issues)
+				
 
 			})
 			.catch(err => {
