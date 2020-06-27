@@ -42,7 +42,7 @@ const connection = mysql.createConnection({
 
 	host: 'localhost',
 	user: 'ubuntu',
-	password: 123,
+	password: '123',
 	database: 'Jira_Training_App'
 
 })
