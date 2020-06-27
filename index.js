@@ -3,6 +3,7 @@ const config = require('config')
 const https = require('https')
 const express  = require('express')
 const exphbs  = require('express-handlebars')
+const mysql = require('mysql')
 const homeRoutes = require('./routes/home')
 const authRoutes = require('./routes/auth')
 const logoutRoutes = require('./routes/logout')
@@ -36,3 +37,19 @@ app.use('*', bedPageRoutes)
 app.listen(PORT, () => {
 	console.log(`Server is running on port: ${PORT}`)
 })
+
+const connection = mysql.createConnection({
+
+	host: 'localhost',
+	user: 'ubuntu',
+	password: 123,
+	database: 'Jira_Training_App'
+
+})
+
+connection.connect()
+
+connection.query('Show Tables', function (error, results, fields) {
+	if (error) throw error;
+	console.log('The solution is: ', results[0].solution);
+  });
