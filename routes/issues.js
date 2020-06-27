@@ -17,8 +17,6 @@ router.use('/', (req, res, next) => {
 
 	}else{
 
-		
-		console.log('qwe')
 		res.redirect('/auth')
 
 	}
@@ -56,21 +54,38 @@ router.post('/', (req, res) => {
 	const url = cookies.get('url')
 	const filtersPath = config.get('filterUrl')
 	const filterIdPath = `/${req.body.filter}`
-	const searchUrl = config.get('searchUrl')
+	const searchPath = config.get('searchUrl')
 	const auth = cookies.get('auth')
 
-	sendRequest('GET', url, filtersPath + filterIdPath, auth)
-	.then(filter => {
+	sendRequest('GET', url, filtersPath, auth)
+	.then(filters => {
 
-		sendRequest('GET', url, searchUrl, auth, {jql: filter.jql})
-		.then(issues => {
+		res.render('issues',{
 
-			console.log(issues.issues)
+			filters: filters,
+			loading: true
+
+		})
+
+		sendRequest('GET', url, filtersPath + filterIdPath, auth)
+		.then(filter => {
+
+			sendRequest('GET', url, searchPath, auth, {jql: filter.jql})
+			.then(issues => {
+
+				// res.end()
+				console.log(issues.issues)
+
+			})
+			.catch(err => {
+
+				res.redirect('/error')
+
+			})
 
 		})
 		.catch(err => {
 
-			console.log(err)
 			res.redirect('/error')
 
 		})

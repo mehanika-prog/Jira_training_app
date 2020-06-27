@@ -22,17 +22,25 @@ function sendRequest(method, host, path, auth = 'Basic', query = null, body = nu
 	return new Promise((resolve, reject) => {	
 		const request = https.request(options, res => {
 
+			let response = ''
+
 			res.on('data', data => {
 
 				if(res.statusCode === 200){
 
-					resolve(JSON.parse(data))
+					response += data
 
 				}else{
 
 					reject()
 
 				}
+
+			})
+
+			res.on('end', data => {
+
+				resolve(JSON.parse(response))
 
 			})
 

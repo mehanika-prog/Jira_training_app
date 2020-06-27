@@ -17,5 +17,11 @@
 		{{/if}}
 	</form>
 	<label for="filters">Select issues by filter</label>
+	{{#if loading}}
+		<div class="progress">
+			<div class="indeterminate"></div>
+		</div>
+	{{/if}}
 </div>
+
 <a class="logOutBtn" href="/logout">Log Out</a>
