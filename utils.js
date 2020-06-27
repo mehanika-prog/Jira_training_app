@@ -2,13 +2,14 @@ const https = require('https')
 const { rejects } = require('assert')
 
 
-function sendRequest(method, host, path, auth = 'Basic', body = null){
+function sendRequest(method, host, path, auth = 'Basic', query = null, body = null){
 
 	const options = {
 
 		method: method,
         host: host,
-        path: path,
+		path: path,
+		query: query,
 		headers: {
 
 			'Content-Type': 'application/json;charset=UTF-8',

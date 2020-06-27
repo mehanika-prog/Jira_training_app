@@ -1,4 +1,5 @@
 {
 	"authUrl": "/rest/auth/1/session",
-	"getFilterUrl": "/rest/api/2/filter"
+	"filterUrl": "/rest/api/2/filter",
+	"searchUrl": "/rest/api/2/search"
 }

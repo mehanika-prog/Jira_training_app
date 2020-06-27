@@ -2,15 +2,15 @@
 	<form action="/issues" method="POST">
 		<select class="validate" id="filters" name="filter">
 			{{!-- <option value="" disabled selected>default filter</option> --}}
-			{{#if data.length}}
-				{{#each data}}
+			{{#if filters.length}}
+				{{#each filters}}
 					<option value="{{id}}">{{name}}</option>
 				{{/each}}
 			{{else}}
 				<option value="" selected disabled>No filters available</option>
 			{{/if}}
 		</select>
-		{{#if data.length}}
+		{{#if filters.length}}
 			<button class="btn btn-primaty">Select</button>
 		{{else}}
 			<button class="btn btn-primaty" disabled>Select</button>
