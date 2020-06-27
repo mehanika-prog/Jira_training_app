@@ -3,6 +3,7 @@ const config = require('config')
 const https = require('https')
 const express  = require('express')
 const exphbs  = require('express-handlebars')
+const fs = require('fs')
 const mysql = require('mysql')
 const homeRoutes = require('./routes/home')
 const authRoutes = require('./routes/auth')
@@ -57,4 +58,6 @@ connection.connect()
 connection.query('Show Tables', function (error, results, fields) {
 	if (error) throw error;
 	console.log('The solution is: ', results[0].solution);
-  });
+});
+
+connection.end()
