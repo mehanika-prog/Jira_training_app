@@ -35,6 +35,7 @@ router.get('/', (req, res) => {
 
 		res.render('issues', {
 
+			title: 'Issues',
 			filters: data
 
 		})
@@ -62,6 +63,7 @@ router.post('/', (req, res) => {
 
 		res.render('issues',{
 
+			title: 'Issues',
 			filters: filters,
 			loading: true
 
