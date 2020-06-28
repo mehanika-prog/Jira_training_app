@@ -1,5 +1,16 @@
 {
 	"authUrl": "/rest/auth/1/session",
 	"filterUrl": "/rest/api/2/filter",
-	"searchUrl": "/rest/api/2/search"
+	"searchUrl": "/rest/api/2/search",
+
+	"dbUrl": "jiratrainingapp.cbpfnuanozoq.us-east-2.rds.amazonaws.com",
+	"dbUser": "webApp",
+	"dbPassword": "password",
+	"dbName": "Jira_Training_App",
+
+	"authWithCooliesSuccessfulQuery": "insert into Jira_Training_App.log(date, time, action, completed) values(curdate(), curtime(), 'authorization with cookies', true);",
+	"authWithCookiesFailureQuery": "insert into Jira_Training_App.log(date, time, action, completed) values(curdate(), curtime(), 'authorization with cookies', false);",
+	"authSuccessfulQuery": "insert into Jira_Training_App.log(date, time, action, completed) values(curdate(), curtime(), 'authorization manually', true);",
+	"authFailureQuery": "insert into Jira_Training_App.log(date, time, action, completed) values(curdate(), curtime(), 'authorization manually', false);",
+	"deAuthSuccessfulQuery": "insert into Jira_Training_App.log(date, time, action, completed) values(curdate(), curtime(), 'deauthorization', true);"
 }

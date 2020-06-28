@@ -1,10 +1,11 @@
 const {Router} = require('express')
 const Cookies = require('cookies')
 const config = require('config')
-const sendRequest = require('../utils')
+const {sendRequest} = require('../utils')
 
 
 const router = Router()
+
 
 router.use('/', (req, res, next) => {
 

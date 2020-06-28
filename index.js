@@ -38,26 +38,3 @@ app.use('*', bedPageRoutes)
 app.listen(PORT, () => {
 	console.log(`Server is running on port: ${PORT}`)
 })
-
-const connection = mysql.createConnection({
-
-	host: 'localhost',
-	user: 'ubuntu',
-	password: '123',
-	database: 'Jira_Training_App',
-	ssl: {
-
-		ca: fs.readFileSync(__dirname + '/mehanika-key.pem')
-
-	}
-
-})
-
-connection.connect()
-
-connection.query('Show Tables', function (error, results, fields) {
-	if (error) throw error;
-	console.log('The solution is: ', results[0].solution);
-});
-
-connection.end()
