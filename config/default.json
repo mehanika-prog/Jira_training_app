@@ -12,5 +12,7 @@
 	"authWithCookiesFailureQuery": "insert into Jira_Training_App.log(date, time, action, completed) values(curdate(), curtime(), 'authorization with cookies', false);",
 	"authSuccessfulQuery": "insert into Jira_Training_App.log(date, time, action, completed) values(curdate(), curtime(), 'authorization manually', true);",
 	"authFailureQuery": "insert into Jira_Training_App.log(date, time, action, completed) values(curdate(), curtime(), 'authorization manually', false);",
-	"deAuthSuccessfulQuery": "insert into Jira_Training_App.log(date, time, action, completed) values(curdate(), curtime(), 'deauthorization', true);"
+	"deAuthSuccessfulQuery": "insert into Jira_Training_App.log(date, time, action, completed) values(curdate(), curtime(), 'deauthorization', true);",
+	"issuesFindedSuccessfulQuery": "insert into Jira_Training_App.log(date, time, action, completed) values(curdate(), curtime(), 'received issues', true);",
+	"issuesFindedFailureQuery": "insert into Jira_Training_App.log(date, time, action, completed) values(curdate(), curtime(), 'received issues', false);"
 }

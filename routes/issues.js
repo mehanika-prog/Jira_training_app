@@ -1,8 +1,11 @@
 const {Router} = require('express')
 const Cookies = require('cookies')
 const config = require('config')
-const {sendRequest} = require('../utils')
+const {sendRequest, dbLogger} = require('../utils')
 
+
+const issuesFindedSuccessful = config.get('issuesFindedSuccessfulQuery')
+const issuesFindedFailure = config.get('issuesFindedFailureQuery')
 
 const router = Router()
 
@@ -62,25 +65,28 @@ router.post('/', (req, res) => {
 	sendRequest('GET', url, filtersPath, auth)
 	.then(filters => {
 
-		res.render('issues',{
-
-			title: 'Issues',
-			filters: filters,
-			loading: true
-
-		})
-
 		sendRequest('GET', url, filtersPath + filterIdPath, auth)
 		.then(filter => {
 
 			sendRequest('GET', url, searchPath, auth, {jql: filter.jql})
 			.then(issues => {
 
-				
+				dbLogger(issuesFindedSuccessful)
+
+				// issues - is row data with information about issues found by the filter.
+
+				res.render('issues',{
+
+					title: 'Issues',
+					filters: filters,
+					issues: JSON.stringify(issues)
+		
+				})
 
 			})
 			.catch(err => {
 
+				dbLogger(issuesFindedFailure)
 				res.redirect('/error')
 
 			})
@@ -88,6 +94,7 @@ router.post('/', (req, res) => {
 		})
 		.catch(err => {
 
+			dbLogger(issuesFindedFailure)
 			res.redirect('/error')
 
 		})
@@ -95,6 +102,7 @@ router.post('/', (req, res) => {
 	})
 	.catch(err => {
 
+		dbLogger(issuesFindedFailure)
 		res.redirect('/error')
 
 	})
