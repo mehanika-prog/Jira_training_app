@@ -1,0 +1,53 @@
+{{#if issuesCount}}
+<table class="centered">
+	<thead>
+		<tr>
+			<th></th>
+			<th></th>
+			{{#each statuses}}
+			<th>{{name}}</th>
+			{{/each}}
+		</tr>
+		<tr>
+			<th>Assignee</th>
+			<th>Type</th>
+			{{#each statuses}}
+			<th>
+				{{#each priorities}}
+				<img style="margin: 0 2rem;" width="20" src="{{iconUrl}}" alt="{{name}}">
+			{{/each}}
+			</th>
+			{{/each}}
+		</tr>
+	</thead>
+	<tbody>
+		{{#each assignees}}
+		<tr>
+			<th>{{displayName}}</th>
+			<th>
+				{{#each types}}
+				<img style="margin: 15px 0;" width="20" src="{{iconUrl}}" alt="{{name}}"><br>
+				{{/each}}
+			</th>
+			{{#each statuses}}
+			<th>
+				<table>
+					{{#each types}}
+					<tr>
+						{{#each priorities}}
+						<td>
+							<a target="_blank" style="margin: 0 1rem;" href="{{vievUrl}}">{{issues.total}}</a>
+						</td>
+						{{/each}}
+					</tr>
+					{{/each}}
+				</table>
+			</th>
+			{{/each}}
+		</tr>
+		{{/each}}
+	</tbody>
+</table>
+{{else}}
+<h3>No issues found!</h3>
+{{/if}}

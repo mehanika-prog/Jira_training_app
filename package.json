@@ -20,6 +20,7 @@
     "cookies": "^0.8.0",
     "express": "^4.17.1",
     "express-handlebars": "^4.0.4",
-    "mysql": "^2.18.1"
+    "mysql": "^2.18.1",
+    "sync-request": "^6.1.0"
   }
 }

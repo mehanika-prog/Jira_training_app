@@ -2,6 +2,7 @@
 	"authUrl": "/rest/auth/1/session",
 	"filterUrl": "/rest/api/2/filter",
 	"searchUrl": "/rest/api/2/search",
+	"issuesUrl": "/issues",
 
 	"dbUrl": "jiratrainingapp.cbpfnuanozoq.us-east-2.rds.amazonaws.com",
 	"dbUser": "webApp",

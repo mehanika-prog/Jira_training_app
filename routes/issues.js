@@ -2,6 +2,7 @@ const {Router} = require('express')
 const Cookies = require('cookies')
 const config = require('config')
 const {sendRequest, dbLogger} = require('../utils')
+const jiraDataConverter = require('../jiraDataConverter')
 
 
 const issuesFindedSuccessful = config.get('issuesFindedSuccessfulQuery')
@@ -67,26 +68,28 @@ router.post('/', (req, res) => {
 
 		sendRequest('GET', url, filtersPath + filterIdPath, auth)
 		.then(filter => {
-
+			
 			sendRequest('GET', url, searchPath, auth, {jql: filter.jql})
 			.then(issues => {
 
 				dbLogger(issuesFindedSuccessful)
 
 				// issues - is row data with information about issues found by the filter.
+				// console.log(jiraDataConverter(issues, url))
 
 				res.render('issues',{
 
 					title: 'Issues',
 					filters: filters,
-					issues: JSON.stringify(issues)
-		
+					parsedIssues: jiraDataConverter(issues, url, auth)
+
 				})
 
 			})
 			.catch(err => {
 
 				dbLogger(issuesFindedFailure)
+				console.log(err, 'issues error')
 				res.redirect('/error')
 
 			})
@@ -95,6 +98,7 @@ router.post('/', (req, res) => {
 		.catch(err => {
 
 			dbLogger(issuesFindedFailure)
+			console.log('filter error', err)
 			res.redirect('/error')
 
 		})
@@ -103,6 +107,7 @@ router.post('/', (req, res) => {
 	.catch(err => {
 
 		dbLogger(issuesFindedFailure)
+		console.log('filters error', err)
 		res.redirect('/error')
 
 	})
